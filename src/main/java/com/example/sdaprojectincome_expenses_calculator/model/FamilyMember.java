@@ -13,6 +13,6 @@ public class FamilyMember {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long familyMemberId;
+    private Long Id;
     private String name;
 }
