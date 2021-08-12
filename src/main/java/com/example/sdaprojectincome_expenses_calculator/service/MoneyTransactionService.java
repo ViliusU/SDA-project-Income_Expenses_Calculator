@@ -5,6 +5,8 @@ import com.example.sdaprojectincome_expenses_calculator.repository.MoneyTransact
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class MoneyTransactionService {
@@ -13,6 +15,10 @@ public class MoneyTransactionService {
 
     public MoneyTransaction addMoneyTransaction (MoneyTransaction moneyTransaction) {
         return moneyTransactionRepository.save(moneyTransaction);
+    }
+
+    public List<MoneyTransaction> getAllMoneyTransactions () {
+        return moneyTransactionRepository.findAll();
     }
 
 }

@@ -23,7 +23,8 @@ public class MoneyTransaction implements Serializable {
     private Long id;
 
     @Column(name = "transaction_type", nullable = false, updatable = false)
-    private TransactionType transactionType;
+//    private TransactionType transactionType;
+    private String transactionType;
 
     @Column(nullable = false)
     private String description;
