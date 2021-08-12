@@ -27,5 +27,5 @@ public class FamilyMember implements Serializable {
     @JoinTable(name = "familyMember_transaction",
             joinColumns = {@JoinColumn(name = "familyMember_id", referencedColumnName = "id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "transaction_id", referencedColumnName = "id", nullable = false, updatable = false)})
-    private Set<Transaction> transactions = new HashSet<>();
+    private Set<MoneyTransaction> moneyTransactions = new HashSet<>();
 }

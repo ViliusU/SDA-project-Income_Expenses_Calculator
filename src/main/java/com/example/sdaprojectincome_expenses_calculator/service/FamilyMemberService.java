@@ -12,6 +12,7 @@ import java.util.List;
 public class FamilyMemberService {
     private final FamilyMemberRepository familyMemberRepository;
 
+
     public List<FamilyMember> getAllFamilyMembers() {
         return familyMemberRepository.findAll();
     }
