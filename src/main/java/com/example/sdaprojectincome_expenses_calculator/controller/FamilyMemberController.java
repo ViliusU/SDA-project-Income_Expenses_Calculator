@@ -41,5 +41,4 @@ public class FamilyMemberController {
         familyMemberService.deleteFamilyMember(familyMemberId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }

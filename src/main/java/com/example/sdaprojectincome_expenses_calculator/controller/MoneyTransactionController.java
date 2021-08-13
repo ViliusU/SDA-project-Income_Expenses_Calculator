@@ -6,10 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,4 +31,15 @@ public class MoneyTransactionController {
         return new ResponseEntity<>(moneyTransactions, HttpStatus.OK);
     }
 
+    @PutMapping(path = "/update")
+    public ResponseEntity<MoneyTransaction> updateMoneyTransaction(@RequestBody MoneyTransaction moneyTransaction) {
+        MoneyTransaction newUpdateMoneyTransaction = moneyTransactionService.editMoneyTransaction(moneyTransaction);
+        return new ResponseEntity<>(newUpdateMoneyTransaction, HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/{moneyTransactionId}")
+    public ResponseEntity<?> deleteMoneyTransaction(@PathVariable("moneyTransactionId") Long moneyTransactionId) {
+        moneyTransactionService.eraseMoneyTransaction(moneyTransactionId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

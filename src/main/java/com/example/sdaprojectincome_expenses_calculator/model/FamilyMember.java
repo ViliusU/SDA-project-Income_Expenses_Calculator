@@ -21,7 +21,4 @@ public class FamilyMember implements Serializable {
 
     @Column(nullable = false)
     private String name;
-
-//    @OneToMany(mappedBy = "familyMember")
-//    private Set<MoneyTransaction> moneyTransactions;
 }

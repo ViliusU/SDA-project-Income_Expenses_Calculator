@@ -36,5 +36,4 @@ public class MoneyTransaction implements Serializable {
     @ManyToOne
     @JoinColumn(name="family_member_id_fk", nullable = true)
     private FamilyMember familyMember;
-
 }
