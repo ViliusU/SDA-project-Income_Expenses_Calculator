@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "family_member")
@@ -16,16 +15,13 @@ import java.util.Set;
 public class FamilyMember implements Serializable {
 
     @Id
-    @Column(nullable = false)
+    @Column(nullable = true, insertable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "familyMember_transaction",
-            joinColumns = {@JoinColumn(name = "familyMember_id", referencedColumnName = "id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "transaction_id", referencedColumnName = "id", nullable = false, updatable = false)})
-    private Set<MoneyTransaction> moneyTransactions = new HashSet<>();
+//    @OneToMany(mappedBy = "familyMember")
+//    private Set<MoneyTransaction> moneyTransactions;
 }

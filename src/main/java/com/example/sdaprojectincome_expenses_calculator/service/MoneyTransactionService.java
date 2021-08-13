@@ -1,6 +1,8 @@
 package com.example.sdaprojectincome_expenses_calculator.service;
 
+import com.example.sdaprojectincome_expenses_calculator.model.FamilyMember;
 import com.example.sdaprojectincome_expenses_calculator.model.MoneyTransaction;
+import com.example.sdaprojectincome_expenses_calculator.repository.FamilyMemberRepository;
 import com.example.sdaprojectincome_expenses_calculator.repository.MoneyTransactionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import java.util.List;
 public class MoneyTransactionService {
 
     private final MoneyTransactionRepository moneyTransactionRepository;
+    private final FamilyMemberRepository familyMemberRepository;
 
     public MoneyTransaction addMoneyTransaction (MoneyTransaction moneyTransaction) {
         return moneyTransactionRepository.save(moneyTransaction);

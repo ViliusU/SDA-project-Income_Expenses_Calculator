@@ -6,10 +6,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
-@Entity(name = "transaction")
+@Entity(name = "money_transaction")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -26,19 +24,17 @@ public class MoneyTransaction implements Serializable {
 //    private TransactionType transactionType;
     private String transactionType;
 
-    @Column(nullable = false)
+    @Column(name = "transaction_description",nullable = false)
     private String description;
 
     @Column(nullable = false)
     private BigDecimal amount;
 
-    @Column(name = "transaction_date", nullable = false)
+    @Column(name = "transaction_date",nullable = false)
     private Date transactionDate;
 
-    @ManyToMany(mappedBy = "moneyTransactions", fetch = FetchType.LAZY)
-    private Set<FamilyMember> familyMembers = new HashSet<>();
-
-
-
+    @ManyToOne
+    @JoinColumn(name="family_member_id_fk", nullable = true)
+    private FamilyMember familyMember;
 
 }
