@@ -1,5 +1,6 @@
 package com.example.sdaprojectincome_expenses_calculator.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class FamilyMember implements Serializable {
 
     @Id

@@ -1,5 +1,6 @@
 package com.example.sdaprojectincome_expenses_calculator.controller;
 
+import com.example.sdaprojectincome_expenses_calculator.model.FamilyMember;
 import com.example.sdaprojectincome_expenses_calculator.model.MoneyTransaction;
 import com.example.sdaprojectincome_expenses_calculator.service.MoneyTransactionService;
 import lombok.AllArgsConstructor;
@@ -18,28 +19,43 @@ public class MoneyTransactionController {
 
     private final MoneyTransactionService moneyTransactionService;
 
-    @PostMapping(path = "/add")
+    @PostMapping()
     public ResponseEntity<MoneyTransaction> addMoneyTransaction(@RequestBody MoneyTransaction moneyTransaction) {
         MoneyTransaction newMoneyTransaction = moneyTransactionService.addMoneyTransaction(moneyTransaction);
         return new ResponseEntity<>(newMoneyTransaction, HttpStatus.CREATED);
     }
 
 
-    @GetMapping(path = "/all")
+    @GetMapping()
     public ResponseEntity<List<MoneyTransaction>> getAllMoneyTransactions() {
         List<MoneyTransaction> moneyTransactions = moneyTransactionService.getAllMoneyTransactions();
         return new ResponseEntity<>(moneyTransactions, HttpStatus.OK);
     }
 
-    @PutMapping(path = "/update")
+    @GetMapping("{id}")
+    public ResponseEntity<MoneyTransaction> getMoneyTransactionById(@PathVariable("id") Long id) {
+        MoneyTransaction moneyTransactionById = moneyTransactionService.findMoneyTransactionById(id);
+        return new ResponseEntity<>(moneyTransactionById, HttpStatus.OK);
+    }
+
+//    @GetMapping("/getTrByFmId/{id}")
+//    public List<ResponseEntity<MoneyTransaction>> findMoneyTransactionsByFamilyMemberId(@PathVariable("id") Long id) {
+//        List<MoneyTransaction> moneyTransactionsByFamilyMemberId = moneyTransactionService.findMoneyTransactionsByFamilyMemberId(id);
+//        return new ResponseEntity<>(moneyTransactionsByFamilyMemberId, HttpStatus.OK);
+//    }
+
+
+    @PutMapping("update")
     public ResponseEntity<MoneyTransaction> updateMoneyTransaction(@RequestBody MoneyTransaction moneyTransaction) {
         MoneyTransaction newUpdateMoneyTransaction = moneyTransactionService.editMoneyTransaction(moneyTransaction);
         return new ResponseEntity<>(newUpdateMoneyTransaction, HttpStatus.OK);
     }
 
-    @DeleteMapping(path = "/{moneyTransactionId}")
+    @DeleteMapping("{moneyTransactionId}")
     public ResponseEntity<?> deleteMoneyTransaction(@PathVariable("moneyTransactionId") Long moneyTransactionId) {
         moneyTransactionService.eraseMoneyTransaction(moneyTransactionId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    
 }

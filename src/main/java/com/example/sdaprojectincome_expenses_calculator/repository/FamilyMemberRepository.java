@@ -14,6 +14,8 @@ public interface FamilyMemberRepository extends JpaRepository<FamilyMember, Long
 //    @Query("SELECT name FROM family_member")
 //    List<FamilyMember> findFamilyMembers();
 
+//    FamilyMember findFamilyMemberById(Long id);
+
 
 
 }
