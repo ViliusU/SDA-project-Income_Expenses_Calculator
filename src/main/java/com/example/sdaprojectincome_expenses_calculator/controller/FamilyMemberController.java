@@ -1,15 +1,19 @@
 package com.example.sdaprojectincome_expenses_calculator.controller;
 
 import com.example.sdaprojectincome_expenses_calculator.model.FamilyMember;
+import com.example.sdaprojectincome_expenses_calculator.repository.FamilyMemberRepository;
 import com.example.sdaprojectincome_expenses_calculator.service.FamilyMemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -18,6 +22,8 @@ import java.util.List;
 public class FamilyMemberController {
 
     private final FamilyMemberService familyMemberService;
+
+    private final FamilyMemberRepository familyMemberRepository2;
 
     @GetMapping()
     public ResponseEntity<List<FamilyMember>> getAllFamilyMembers() {
@@ -43,17 +49,8 @@ public class FamilyMemberController {
         return new ResponseEntity<>(updateFamilyMember, HttpStatus.OK);
     }
 
-//    @PutMapping("{id}")
-//    public ResponseEntity<Void> updateFamilyMember1(@PathVariable Long Id, @RequestParam("name") String name) {
-//        FamilyMember updatedfamilyMember = familyMemberService.updateFamilyMemberById(Id);
-//        updatedfamilyMember.setName(name);
-//        familyMemberService.
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-
-
     @Transactional
-    @DeleteMapping(path = "{familyMemberId}")
+    @DeleteMapping("/{familyMemberId}")
     public ResponseEntity<?> deleteFamilyMember(@PathVariable("familyMemberId") Long familyMemberId) {
         familyMemberService.deleteFamilyMember(familyMemberId);
         return new ResponseEntity<>(HttpStatus.OK);
