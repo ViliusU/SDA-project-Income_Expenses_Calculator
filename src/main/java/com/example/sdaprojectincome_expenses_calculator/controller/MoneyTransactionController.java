@@ -38,14 +38,7 @@ public class MoneyTransactionController {
         return new ResponseEntity<>(moneyTransactionById, HttpStatus.OK);
     }
 
-//    @GetMapping("/getTrByFmId/{id}")
-//    public List<ResponseEntity<MoneyTransaction>> findMoneyTransactionsByFamilyMemberId(@PathVariable("id") Long id) {
-//        List<MoneyTransaction> moneyTransactionsByFamilyMemberId = moneyTransactionService.findMoneyTransactionsByFamilyMemberId(id);
-//        return new ResponseEntity<>(moneyTransactionsByFamilyMemberId, HttpStatus.OK);
-//    }
-
-
-    @PutMapping("update")
+    @PutMapping()
     public ResponseEntity<MoneyTransaction> updateMoneyTransaction(@RequestBody MoneyTransaction moneyTransaction) {
         MoneyTransaction newUpdateMoneyTransaction = moneyTransactionService.editMoneyTransaction(moneyTransaction);
         return new ResponseEntity<>(newUpdateMoneyTransaction, HttpStatus.OK);
