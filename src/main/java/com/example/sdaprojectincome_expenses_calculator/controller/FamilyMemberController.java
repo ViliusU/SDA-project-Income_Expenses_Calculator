@@ -39,7 +39,7 @@ public class FamilyMemberController {
         return new ResponseEntity<>(newFamilyMember, HttpStatus.CREATED);
     }
 
-    @PutMapping("")
+    @PutMapping()
     public ResponseEntity<FamilyMember> updateFamilyMember(@RequestBody FamilyMember familyMember) {
         FamilyMember updateFamilyMember = familyMemberService.updateFamilyMember(familyMember);
         return new ResponseEntity<>(updateFamilyMember, HttpStatus.OK);
