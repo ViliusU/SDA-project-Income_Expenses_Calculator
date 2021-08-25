@@ -6,13 +6,11 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class FamilyMemberService {
     private final FamilyMemberRepository familyMemberRepository;
-
 
     public List<FamilyMember> getAllFamilyMembers() {
         return familyMemberRepository.findAll();

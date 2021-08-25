@@ -22,20 +22,20 @@ public class MoneyTransaction implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "transaction_type", nullable = false, updatable = false)
-//    private TransactionType transactionType;
-    private String transactionType;
-
-    @Column(name = "transaction_description",nullable = false)
+    @Column(name = "transaction_description", nullable = false)
     private String description;
 
     @Column(nullable = false)
     private BigDecimal amount;
 
-    @Column(name = "transaction_date",nullable = false)
+    @Column(name = "transaction_date", nullable = false)
     private Date transactionDate;
 
     @ManyToOne
-    @JoinColumn(name="family_member_id_fk", nullable = true)
+    @JoinColumn(name = "family_member_id_fk", nullable = true)
     private FamilyMember familyMember;
+
+    @ManyToOne
+    @JoinColumn(name = "transaction_type_id_fk", nullable = true)
+    private TransactionType transactionType;
 }

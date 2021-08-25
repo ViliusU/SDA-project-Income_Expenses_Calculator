@@ -1,6 +1,5 @@
 package com.example.sdaprojectincome_expenses_calculator.controller;
 
-import com.example.sdaprojectincome_expenses_calculator.model.FamilyMember;
 import com.example.sdaprojectincome_expenses_calculator.model.MoneyTransaction;
 import com.example.sdaprojectincome_expenses_calculator.service.MoneyTransactionService;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 
 @Controller
 @AllArgsConstructor
@@ -49,6 +47,4 @@ public class MoneyTransactionController {
         moneyTransactionService.eraseMoneyTransaction(moneyTransactionId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-    
 }

@@ -1,7 +1,6 @@
 package com.example.sdaprojectincome_expenses_calculator.controller;
 
 import com.example.sdaprojectincome_expenses_calculator.model.FamilyMember;
-import com.example.sdaprojectincome_expenses_calculator.repository.FamilyMemberRepository;
 import com.example.sdaprojectincome_expenses_calculator.service.FamilyMemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,8 +17,6 @@ import java.util.List;
 public class FamilyMemberController {
 
     private final FamilyMemberService familyMemberService;
-
-    private final FamilyMemberRepository familyMemberRepository2;
 
     @GetMapping()
     public ResponseEntity<List<FamilyMember>> getAllFamilyMembers() {
