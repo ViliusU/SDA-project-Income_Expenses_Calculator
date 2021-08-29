@@ -1,7 +1,9 @@
 package com.example.sdaprojectincome_expenses_calculator.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,6 +31,7 @@ public class MoneyTransaction implements Serializable {
     private BigDecimal amount;
 
     @Column(name = "transaction_date", nullable = false)
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date transactionDate;
 
     @ManyToOne
