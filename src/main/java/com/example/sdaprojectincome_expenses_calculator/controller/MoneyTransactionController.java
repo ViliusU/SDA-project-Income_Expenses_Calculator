@@ -23,7 +23,6 @@ public class MoneyTransactionController {
         return new ResponseEntity<>(newMoneyTransaction, HttpStatus.CREATED);
     }
 
-
     @GetMapping()
     public ResponseEntity<List<MoneyTransaction>> getAllMoneyTransactions() {
         List<MoneyTransaction> moneyTransactions = moneyTransactionService.getAllMoneyTransactions();
